@@ -1,26 +1,109 @@
-@import "tailwindcss";
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #6b5bff 0%, #2a1e6b 55%, #0f1020 100%);
+  color: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  min-height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.page {
+  width: min(100%, 720px);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 28px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.35);
+  padding: 2.5rem;
+  backdrop-filter: blur(18px);
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #dcdcff;
+  margin-bottom: 1.75rem;
+}
+
+.dice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dice-box {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 22px;
+  padding: 1.75rem;
+  text-align: center;
+}
+
+.dice-face {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.dice-box p {
+  margin-top: 0.75rem;
+  color: #f3f3ff;
+  font-weight: 600;
+}
+
+.message {
+  margin-bottom: 1.5rem;
+  color: #d5d5ff;
+  font-size: 1.05rem;
+}
+
+.roll-button {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #8c77ff 0%, #5f6bff 100%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.roll-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 38px rgba(95, 107, 255, 0.36);
+}
+
+@media (max-width: 560px) {
+  .dice-grid {
+    grid-template-columns: 1fr;
+  }
 }
